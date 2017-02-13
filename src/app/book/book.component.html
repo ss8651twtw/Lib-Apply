@@ -1,3 +1,27 @@
-<p>
-  book works!
-</p>
+<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+  <label>課程名稱</label>
+  <input type="text" ngModel name="course">
+  <br>
+  <label>開授學期</label>
+  <select ngModel name="semester">
+    <option value="" selected>選擇學期</option>
+    <option value="10501">105 上</option>
+  　<option value="10502">105 下</option>
+  　<option value="10601">106 上</option>
+  　<option value="10602">106 下</option>
+  </select>
+  <br>
+  <label>授課老師</label>
+  <input type="text" ngModel name="teacher">
+  <br>
+  <label>開課系所</label>
+  <input type="text" ngModel name="department">
+  <br>
+  <label>Email</label>
+  <input type="email" ngModel name="email">
+  <br>
+  <label>連絡電話</label>
+  <input type="text" ngModel name="phone">
+  <br>
+  <button type="submit">送出</button>
+</form>
