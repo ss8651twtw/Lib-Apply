@@ -13,6 +13,7 @@ import {routing} from "./app.routing";
 import {CookieService} from "./cookie.service";
 import { CardComponent } from './card/card.component';
 import { BookComponent } from './book/book.component';
+import { ManageComponent } from './manage/manage.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BookComponent } from './book/book.component';
     MainComponent,
     SurveyComponent,
     CardComponent,
-    BookComponent
+    BookComponent,
+    ManageComponent
   ],
   imports: [
     BrowserModule,
