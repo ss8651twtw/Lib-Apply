@@ -15,8 +15,9 @@ export class ManageComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    if (this.cookie.checkValid() == false || this.cookie.checkAdmin()) {
-      this.router.navigate(['login']);
+    if (this.cookie.checkAdmin() == false) {
+      alert('進不去QQ');
+      this.router.navigate(['']);
     }
   }
 

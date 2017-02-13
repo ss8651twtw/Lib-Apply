@@ -21,8 +21,16 @@ export class LoginComponent implements OnInit {
   onSubmitted(form: NgForm) {
     this.userId = form['value']['userid'];
     this.userPwd = form['value']['userpwd'];
-    if (this.userId == 'haha' && this.userPwd == 'haha') {
-      this.cookie.setCookie(this.userId);
+    if (this.userId == 'auth' && this.userPwd == 'auth') {
+      this.cookie.setCookie('2' + this.userId);
+      this.router.navigate(['']);
+    }
+    else if (this.userId == 'teacher' && this.userPwd == 'teacher') {
+      this.cookie.setCookie('1' + this.userId);
+      this.router.navigate(['']);
+    }
+    else if (this.userId == 'admin' && this.userPwd == 'admin') {
+      this.cookie.setCookie('0' + this.userId);
       this.router.navigate(['']);
     }
     else {
