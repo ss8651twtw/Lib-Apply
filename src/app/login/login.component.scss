@@ -1,0 +1,59 @@
+.envelope-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  height: 250px;
+  top: 8%;
+}
+
+.envelope-body {
+  position: absolute;
+  width: 400px;
+  height: 249px;
+  background-color: #0431B4;
+  top: 50px;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 125px 200px 125px 200px;
+    border-color: transparent transparent #0431B4 transparent;
+    top: -250px;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 125px 200px 125px 200px;
+    border-color: transparent #00BFFF #01DFD7 #01DFD7;
+    z-index: 1;
+  }
+}
+
+.envelope-paper {
+  position: absolute;
+  width: 320px;
+  height: 300px;
+  background-color: white;
+  top: -125px;
+  padding: 20px;
+}
+
+.username {
+
+}
+
+.password {
+
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
