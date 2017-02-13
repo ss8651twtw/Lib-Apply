@@ -1,3 +1,7 @@
 <a [routerLink]="''">首頁</a>
-<button *ngIf="logstatus == false" [routerLink]="'login'">登入</button>
-<button *ngIf="logstatus == true" (click)="onClicked()">登出</button>
+<a *ngIf="admin == true" [routerLink]="'manage'">管理</a>
+<button *ngIf="login == false" [routerLink]="'login'">登入</button>
+<span *ngIf="login == true">
+  {{cookie.getId()}}
+  <button (click)="onClicked()">登出</button>
+</span>

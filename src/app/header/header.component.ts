@@ -10,19 +10,22 @@ export class HeaderComponent implements DoCheck {
 
   constructor(private cookie: CookieService) { }
 
-  logstatus: boolean;
+  login: boolean = false;
+  admin: boolean = false;
 
   ngDoCheck() {
-    if (this.cookie.getCookie() == 'undefined' || this.cookie.getCookie() == '') {
-      this.logstatus = false;
-    }
-    else {
-      this.logstatus = true;
+    if (this.cookie.checkUser()) {
+      this.login = true;
+      if (this.cookie.checkAdmin()) {
+        this.admin = true;
+      }
     }
   }
 
   onClicked() {
     this.cookie.setCookie('');
+    this.login = false;
+    this.admin = false;
   }
 
 }
