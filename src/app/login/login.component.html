@@ -1,7 +1,20 @@
-<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
-  <label>帳號</label>
-  <input type="text" ngModel name="userid">
-  <label>密碼</label>
-  <input type="password" ngModel name="userpwd">
-  <button type="submit">送出</button>
-</form>
+<div class="center-wrapper">
+  <div class="envelope-wrapper">
+    <div class="envelope-body materialize"></div>
+    <div class="envelope-paper materialize">
+      <div class="row">
+        <form class="col s12" (ngSubmit)="onSubmitted(f)" #f="ngForm">
+          <div class="input-field username">
+            <input type="text" class="validate" ngModel name="userid">
+            <label>Username</label>
+          </div>
+          <div class="input-field password">
+            <input type="password" class="validate" ngModel name="userpwd">
+            <label>Password</label>
+          </div>
+          <div type="submit" class="submit"><a class="waves-effect waves-light btn">submit</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
