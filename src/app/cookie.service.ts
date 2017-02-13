@@ -6,7 +6,7 @@ export class CookieService {
   constructor() { }
 
   getType() {
-    return decodeURIComponent(document.cookie).split(';').pop()[1];
+    return parseInt(decodeURIComponent(document.cookie).split(';').pop()[1]);
   }
 
   getId() {
@@ -14,7 +14,7 @@ export class CookieService {
   }
 
   checkAdmin() {
-    if (this.getType() == '0' && this.getId() == 'admin') {
+    if (this.checkUser() && this.getType() == 0 && this.getId() == 'admin') {
       return true;
     }
     else {
@@ -23,7 +23,7 @@ export class CookieService {
   }
 
   checkTeacher() {
-    if (this.checkUser() && this.getType() == '1') {
+    if (this.checkUser() && this.getType() <= 1) {
       return true;
     }
     else {
@@ -32,7 +32,7 @@ export class CookieService {
   }
 
   checkAuth() {
-    if (this.checkUser() && this.getType() == '2') {
+    if (this.checkUser() && this.getType() <= 2) {
       return true;
     }
     else {
