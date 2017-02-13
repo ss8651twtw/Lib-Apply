@@ -1,3 +1,32 @@
-<p>
-  survey works!
-</p>
+<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+  <label>姓名</label>
+  <input type="text" ngModel name="name">
+  <br>
+  <label>申請日期</label>
+  {{applydate}}
+  <br>
+  <label>請求事項</label>
+  <select ngModel name="method">
+    <option value="" selected>停止蒐集、處理與利用</option>
+    <option value="delete">資料刪除</option>
+  </select>
+  <select ngModel name="event">
+    <option value="" selected>當事人所有個資</option>
+    <option value="address">通訊/戶籍地址</option>
+    <option value="id">身分證字號</option>
+    <option value="phone">電話/手機號碼</option>
+    <option value="email">電子信箱</option>
+  </select>
+  <br>
+  <label>原因說明</label>
+  <input type="text" ngModel name="reason">
+  <br>
+  <label>回覆方式</label>
+  <select ngModel name="touch">
+    <option value="" selected>Email</option>
+    <option value="phone">電話連繫</option>
+  </select>
+  <input type="text" ngModel name="reply">
+  <br>
+  <button type="submit">送出</button>
+</form>
