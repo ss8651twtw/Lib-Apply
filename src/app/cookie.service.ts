@@ -5,21 +5,52 @@ export class CookieService {
 
   constructor() { }
 
-  getCookie() {
-    return decodeURIComponent(document.cookie).split(';').pop().substring(1);
+  getType() {
+    return decodeURIComponent(document.cookie).split(';').pop()[1];
   }
 
-  setCookie(val: string) {
-    document.cookie = val;
+  getId() {
+    return decodeURIComponent(document.cookie).split(';').pop().substring(2);
   }
 
-  checkValid() {
-    if (this.getCookie() == 'undefined' || this.getCookie() == '') {
+  checkAdmin() {
+    if (this.getType() == '0' && this.getId() == 'admin') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  checkTeacher() {
+    if (this.checkUser() && this.getType() == '1') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  checkAuth() {
+    if (this.checkUser() && this.getType() == '2') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  checkUser() {
+    if (this.getId() == 'undefined' || this.getId() == '') {
       return false;
     }
     else {
       return true;
     }
+  }
+
+  setCookie(val: string) {
+    document.cookie = val;
   }
 
 }
