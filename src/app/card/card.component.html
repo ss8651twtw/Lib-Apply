@@ -1,3 +1,10 @@
-<p>
-  card works!
-</p>
+<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+  <label>完全行為能力人</label>
+  <input type="radio" ngModel name="adult" value="yes">是
+  <input type="radio" ngModel name="adult" value="no">否
+  <br>
+  *如果您未滿20歲，或有其他民法上行為能力之欠缺事由，
+  請勾選否。
+  <br>
+  <button type="submit">送出</button>
+</form>
