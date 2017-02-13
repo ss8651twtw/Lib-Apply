@@ -1,0 +1,3 @@
+<a [routerLink]="''">首頁</a>
+<button *ngIf="logstatus == false" [routerLink]="'login'">登入</button>
+<button *ngIf="logstatus == true" (click)="onClicked()">登出</button>
