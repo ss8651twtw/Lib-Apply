@@ -6,11 +6,11 @@
   {{applydate}}
   <br>
   <label>請求事項</label>
-  <select ngModel name="method">
+  <select class="browser-default" ngModel name="method">
     <option value="" selected>停止蒐集、處理與利用</option>
     <option value="delete">資料刪除</option>
   </select>
-  <select ngModel name="event">
+  <select class="browser-default" ngModel name="event">
     <option value="" selected>當事人所有個資</option>
     <option value="address">通訊/戶籍地址</option>
     <option value="id">身分證字號</option>
@@ -22,7 +22,7 @@
   <input type="text" ngModel name="reason">
   <br>
   <label>回覆方式</label>
-  <select ngModel name="touch">
+  <select class="browser-default" ngModel name="touch">
     <option value="" selected>Email</option>
     <option value="phone">電話連繫</option>
   </select>
