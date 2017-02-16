@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css");
 
+/*
+A sticky footer always stays on the bottom of the page regardless of how little content is on the page.
+However, this footer will be pushed down if there is a lot of content, so it is different from a fixed footer.
+*/
+app-root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 body {
   font-family: 'cwTeXhei', 'Roboto', serif;
   margin: 0;
@@ -14,6 +24,11 @@ body {
   border-radius: 0 !important;
 }
 
+.de-button {
+  border: none;
+  background-color: transparent;
+}
+
 .center-wrapper {
   display: flex;
   justify-content: center;
@@ -21,3 +36,4 @@ body {
   height: 100vh;
   background-color: #D8F781;
 }
+

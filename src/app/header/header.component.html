@@ -1,7 +1,14 @@
-<a [routerLink]="''">首頁</a>
-<a *ngIf="admin == true" [routerLink]="'manage'">管理</a>
-<button *ngIf="login == false" [routerLink]="'login'">登入</button>
-<span *ngIf="login == true">
-  {{cookie.getId()}}
-  <button (click)="onClicked()">登出</button>
-</span>
+<nav class="teal accent-4">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Library</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a [routerLink]="''">首頁</a></li>
+      <li><a *ngIf="admin == true" [routerLink]="'manage'">管理</a></li>
+      <li><a *ngIf="login == false" [routerLink]="'login'" >登入</a></li>
+      <template [ngIf]="login == true">
+        <li><a href="#"> {{ cookie.getId() }} </a></li>
+        <li><a (click)="onClicked()">登出</a></li>
+      </template>
+    </ul>
+  </div>
+</nav>
