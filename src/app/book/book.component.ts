@@ -2,15 +2,17 @@ import {Component, OnInit, DoCheck} from '@angular/core';
 import {CookieService} from "../cookie.service";
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
+import {HttpService} from "../http.service"
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
+  providers: [HttpService]
 })
 export class BookComponent implements DoCheck {
 
-  constructor(private cookie: CookieService, private router: Router) { }
+  constructor(private http: HttpService, private cookie: CookieService, private router: Router) { }
 
   ngDoCheck() {
     if (this.cookie.checkTeacher() == false) {
@@ -20,7 +22,8 @@ export class BookComponent implements DoCheck {
   }
 
   onSubmitted(form: NgForm) {
-    console.log(form['value']);
+    var response = this.http.sendBookData(form['value']).subscribe();
+    console.log(response);
   }
 
 }
