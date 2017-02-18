@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class CookieService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getType() {
     return parseInt(decodeURIComponent(document.cookie).split(';').pop()[1]);
@@ -14,39 +15,19 @@ export class CookieService {
   }
 
   checkAdmin() {
-    if (this.checkUser() && this.getType() == 0 && this.getId() == 'admin') {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return this.checkUser() && this.getType() == 0 && this.getId() == 'admin';
   }
 
   checkTeacher() {
-    if (this.checkUser() && this.getType() <= 1) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return this.checkUser() && this.getType() <= 1;
   }
 
   checkAuth() {
-    if (this.checkUser() && this.getType() <= 2) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return this.checkUser() && this.getType() <= 2;
   }
 
   checkUser() {
-    if (this.getId() == 'undefined' || this.getId() == '') {
-      return false;
-    }
-    else {
-      return true;
-    }
+    return !(this.getId() == 'undefined' || this.getId() == '');
   }
 
   setCookie(val: string) {
