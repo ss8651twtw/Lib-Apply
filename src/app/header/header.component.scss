@@ -1,3 +1,9 @@
 nav {
-  padding: 0 20px 0 20px;
+  padding: 0 200px 0 200px;
+  a {
+    font-weight: 500;
+  }
+  ul > li > a {
+    font-size: 20px;
+  }
 }

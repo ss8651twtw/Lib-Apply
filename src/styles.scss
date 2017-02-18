@@ -2,32 +2,20 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css");
 @import '_vars';
 
-/*
-A sticky footer always stays on the bottom of the page regardless of how little content is on the page.
-However, this footer will be pushed down if there is a lot of content, so it is different from a fixed footer.
-*/
-app-root {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
 body {
   font-family: 'cwTeXhei', 'Roboto', serif;
   margin: 0;
 }
 
-.materialize {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
-
-.de-radius {
-  border-radius: 0 !important;
-}
-
-.de-button {
-  border: none;
-  background-color: transparent;
+/*
+app-wrapper is for sticky footer
+A sticky footer always stays on the bottom of the page regardless of how little content is on the page.
+However, this footer will be pushed down if there is a lot of content, so it is different from a fixed footer.
+*/
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .center-wrapper {
@@ -41,6 +29,19 @@ body {
 .row-wrapper {
   display: flex;
   flex-flow: row wrap;
+}
+
+.materialize {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.de-radius {
+  border-radius: 0 !important;
+}
+
+.de-button {
+  border: none;
+  background-color: transparent;
 }
 
 .submit {

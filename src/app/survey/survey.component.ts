@@ -8,6 +8,9 @@ import { HttpService } from "../http.service";
   selector: 'app-survey',
   templateUrl: './survey.component.html',
   styleUrls: [ './survey.component.scss' ],
+  host: {
+    class: 'center-wrapper'
+  },
   providers: [ HttpService ]
 } )
 export class SurveyComponent implements OnInit, DoCheck {

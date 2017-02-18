@@ -8,6 +8,9 @@ import { HttpService } from "../http.service"
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: [ './book.component.scss' ],
+  host: {
+    class: 'center-wrapper'
+  },
   providers: [ HttpService ]
 } )
 export class BookComponent implements DoCheck {
