@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css");
+@import '_vars';
 
 /*
 A sticky footer always stays on the bottom of the page regardless of how little content is on the page.
@@ -34,6 +35,16 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #D8F781;
+  background-color: $background-color;
 }
 
+.row-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

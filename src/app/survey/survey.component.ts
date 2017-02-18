@@ -1,20 +1,21 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
-import {CookieService} from "../cookie.service";
-import {Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
-import {HttpService} from "../http.service";
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { CookieService } from "../cookie.service";
+import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
+import { HttpService } from "../http.service";
 
-@Component({
+@Component( {
   selector: 'app-survey',
   templateUrl: './survey.component.html',
-  styleUrls: ['./survey.component.scss'],
-  providers: [HttpService]
-})
+  styleUrls: [ './survey.component.scss' ],
+  providers: [ HttpService ]
+} )
 export class SurveyComponent implements OnInit, DoCheck {
 
-  constructor(private http: HttpService, private cookie: CookieService, private router: Router) { }
+  constructor( private http: HttpService, private cookie: CookieService, private router: Router ) { }
 
   applydate: string;
+  enable_second: boolean = false;
 
   ngOnInit() {
     var dd = new Date();
@@ -25,15 +26,18 @@ export class SurveyComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    if (this.cookie.checkAuth() == false) {
-      alert('進不去QQ');
-      this.router.navigate(['']);
+    if ( this.cookie.checkAuth() == false ) {
+      alert( '進不去QQ' );
+      this.router.navigate( [ '' ] );
     }
   }
 
-  onSubmitted(form: NgForm) {
-    var response = this.http.sendSurveyData(form['value']).subscribe();
-    console.log(response);
+  onSubmitted( form: NgForm ) {
+    this.http.sendSurveyData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
+  }
+
+  setEnableSecond() {
+    this.enable_second = true;
   }
 
 }
