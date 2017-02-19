@@ -1,0 +1,16 @@
+<ul class="collapsible" data-collapsible="accordion">
+  <li *ngFor="let applyForm of applyForms">
+    <div class="collapsible-header">
+      <span class="new badge"></span>
+      <i class="material-icons">filter_drama</i>
+      For course : {{ applyForm["course"] }}
+    </div>
+    <div class="collapsible-body">
+      <p>Department : {{ applyForm["department"] }}</p>
+      <p>Email : {{ applyForm["email"] }}</p>
+      <p>Phone : {{ applyForm["phone"] }}</p>
+      <p>Semester : {{ applyForm["semester"] }}</p>
+      <p>Teacher : {{ applyForm["teacher"] }}</p>
+    </div>
+  </li>
+</ul>
