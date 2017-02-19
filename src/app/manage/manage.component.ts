@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { CookieService } from "../cookie.service";
+import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
 
 @Component( {

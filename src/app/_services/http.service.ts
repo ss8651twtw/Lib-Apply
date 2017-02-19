@@ -6,7 +6,9 @@ import { Observable } from "rxjs";
 @Injectable()
 export class HttpService {
 
-  backend_domain: string = "http://frozenkp.com.tw";
+  localhost: string = "http://127.0.0.1";
+  frozenkp: string = "http://frozenkp.com.tw";
+  backend_domain: string = this.localhost;
   backend_port: string = "8000";
 
   constructor( private http: Http ) { }
@@ -20,20 +22,20 @@ export class HttpService {
   }
 
   checkUser( userid ) {
-    return this.http.get( "http://cir11.lib.nctu.edu.tw/api/checkUser/" + userid )
-      .map( ( response: Response ) => response.status ).catch( this.handleError );
+    return this.http.get( this.backend_domain + ':' + this.backend_port + "/api/checkUser" + userid )
+      .map( ( response: Response ) => JSON.parse( response["_body"] ) ).catch( this.handleError );
   }
 
   checkAuth( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
-    return this.http.post( "http://cir11.lib.nctu.edu.tw/api/checkAuth", this.urlEncode( data ), { headers: headers } )
-      .map( ( data: Response ) => data.status ).catch( this.handleError );
+    return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/checkAuth", this.urlEncode( data ), { headers: headers } )
+      .map( ( data: Response ) => JSON.parse( data["_body"] ) ).catch( this.handleError );
   }
 
   checkTeacher( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
-    return this.http.post( "http://cir11.lib.nctu.edu.tw/api/checkTeacher/", this.urlEncode( data ), { headers: headers } )
-      .map( ( response: Response ) => response.status ).catch( this.handleError );
+    return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/checkTeacher", this.urlEncode( data ), { headers: headers } )
+      .map( ( response: Response ) => JSON.parse( response["_body"] ) ).catch( this.handleError );
   }
 
   getBookData() {
@@ -49,13 +51,13 @@ export class HttpService {
   sendBookData( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
     return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/book", this.urlEncode( data ), { headers: headers } )
-      .map( ( data: Response ) => data.status ).catch( this.handleError );
+      .map( ( data: Response ) => data ).catch( this.handleError );
   }
 
   sendSurveyData( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
     return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/survey", this.urlEncode( data ), { headers: headers } )
-      .map( ( data: Response ) => data.status ).catch( this.handleError );
+      .map( ( data: Response ) => data ).catch( this.handleError );
   }
 
   private handleError( error: Response ) {

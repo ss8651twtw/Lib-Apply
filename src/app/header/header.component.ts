@@ -1,5 +1,5 @@
 import {Component, DoCheck} from '@angular/core';
-import {CookieService} from "../cookie.service";
+import {CookieService} from "../_services/cookie.service";
 
 @Component({
   selector: 'app-header',
