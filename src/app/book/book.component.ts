@@ -1,13 +1,16 @@
 import { Component, DoCheck } from '@angular/core';
-import { CookieService } from "../cookie.service";
+import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { HttpService } from "../http.service"
+import { HttpService } from "../_services/http.service"
 
 @Component( {
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: [ './book.component.scss' ],
+  host: {
+    class: 'app-wrapper'
+  },
   providers: [ HttpService ]
 } )
 export class BookComponent implements DoCheck {

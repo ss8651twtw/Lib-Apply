@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { SurveyComponent } from './survey/survey.component';
 import { routing } from "./app.routing";
-import { CookieService } from "./cookie.service";
+import { CookieService } from "./_services/cookie.service";
 import { CardComponent } from './card/card.component';
 import { BookComponent } from './book/book.component';
 import { ManageComponent } from './manage/manage.component';

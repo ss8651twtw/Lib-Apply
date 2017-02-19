@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CookieService {
@@ -7,11 +7,11 @@ export class CookieService {
   }
 
   getType() {
-    return parseInt(decodeURIComponent(document.cookie).split(';').pop()[1]);
+    return parseInt( decodeURIComponent( document.cookie ).split( ';' ).pop()[ 1 ] );
   }
 
   getId() {
-    return decodeURIComponent(document.cookie).split(';').pop().substring(2);
+    return decodeURIComponent( document.cookie ).split( ';' ).pop().substring( 2 );
   }
 
   checkAdmin() {
@@ -30,7 +30,7 @@ export class CookieService {
     return !(this.getId() == 'undefined' || this.getId() == '');
   }
 
-  setCookie(val: string) {
+  setCookie( val: string ) {
     document.cookie = val;
   }
 
