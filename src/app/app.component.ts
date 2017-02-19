@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   host: {
-    class:'app-wrapper'
+    class:'sticky-wrapper'
   }
 })
 export class AppComponent {

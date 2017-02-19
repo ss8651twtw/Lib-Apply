@@ -5,7 +5,10 @@ import { Router } from "@angular/router";
 @Component( {
   selector: 'app-manage',
   templateUrl: './manage.component.html',
-  styleUrls: [ './manage.component.scss' ]
+  styleUrls: [ './manage.component.scss' ],
+  host: {
+    class: "app-wrapper"
+  }
 } )
 export class ManageComponent implements OnInit, DoCheck {
 

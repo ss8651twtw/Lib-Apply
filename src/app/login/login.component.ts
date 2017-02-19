@@ -8,6 +8,9 @@ import { HttpService } from "../http.service";
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
+  host: {
+    class: "app-wrapper"
+  },
   providers: [ HttpService ]
 } )
 export class LoginComponent implements OnInit {

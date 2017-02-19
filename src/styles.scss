@@ -12,7 +12,7 @@ app-wrapper is for sticky footer
 A sticky footer always stays on the bottom of the page regardless of how little content is on the page.
 However, this footer will be pushed down if there is a lot of content, so it is different from a fixed footer.
 */
-.app-wrapper {
+.sticky-wrapper {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -22,13 +22,12 @@ However, this footer will be pushed down if there is a lot of content, so it is 
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: $background-color;
 }
 
-.row-wrapper {
-  display: flex;
-  flex-flow: row wrap;
+.app-wrapper {
+  @extend .center-wrapper;
+  height: 85.9vh;
+  background-color: $background-color;
 }
 
 .materialize {

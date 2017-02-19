@@ -9,7 +9,7 @@ import { HttpService } from "../http.service"
   templateUrl: './book.component.html',
   styleUrls: [ './book.component.scss' ],
   host: {
-    class: 'center-wrapper'
+    class: 'app-wrapper'
   },
   providers: [ HttpService ]
 } )

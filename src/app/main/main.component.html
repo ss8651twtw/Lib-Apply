@@ -1,10 +1,21 @@
-<div class="header-extend">
-  <p>Variety is the spice of life.</p>
+<div class="header-extend materialize">
+  <p>Life is painting a picture, not doing a sum.</p>
 </div>
 
-<br>
-<a [routerLink]="'card'">借書證申請單</a>
-<br>
-<a [routerLink]="'book'">教授指定參考書</a>
-<br>
-<a [routerLink]="'survey'">圖書館個人資料權利請求服務申請單</a>
+<div class="app-wrapper">
+    <div class="icon-wrapper center-wrapper">
+      <div class="main-card materialize"></div>
+      <p>借書證申請單</p>
+      <a [routerLink]="'card'" class="waves-effect waves-light btn">申請</a>
+    </div>
+    <div class="icon-wrapper center-wrapper">
+      <div class="main-book materialize"></div>
+      <p>教授指定參考書</p>
+      <a [routerLink]="'book'" class="waves-effect waves-light btn">申請</a>
+    </div>
+    <div class="icon-wrapper center-wrapper">
+      <div class="main-survey materialize"></div>
+      <p>圖書館個人資料權利請求服務申請單</p>
+      <a [routerLink]="'survey'" class="waves-effect waves-light btn">申請</a>
+    </div>
+</div>
