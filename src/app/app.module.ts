@@ -15,6 +15,8 @@ import { CardComponent } from './card/card.component';
 import { BookComponent } from './book/book.component';
 import { ManageComponent } from './manage/manage.component';
 import { PageformComponent } from './pageform/pageform.component';
+import { ManageBookComponent } from './manage/manage-book/manage-book.component';
+import { ManageSurveyComponent } from './manage/manage-survey/manage-survey.component';
 
 @NgModule( {
   declarations: [
@@ -27,7 +29,9 @@ import { PageformComponent } from './pageform/pageform.component';
     CardComponent,
     BookComponent,
     ManageComponent,
-    PageformComponent
+    PageformComponent,
+    ManageBookComponent,
+    ManageSurveyComponent
   ],
   imports: [
     BrowserModule,

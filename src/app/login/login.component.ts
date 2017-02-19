@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
@@ -15,14 +15,12 @@ declare var Materialize: any;
   },
   providers: [ HttpService ]
 } )
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor( private http: HttpService, private cookie: CookieService, private router: Router ) { }
 
   private userId: string;
   private userPwd: string;
-
-  ngOnInit() { }
 
   onSubmitted( form: NgForm ) {
     this.userId = form[ 'value' ][ 'userid' ];
