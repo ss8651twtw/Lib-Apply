@@ -6,28 +6,60 @@ export class CookieService {
   constructor() {
   }
 
-  getType(type: string) {
-    //return decodeURIComponent( document.cookie ).includes('Type=' + type);
-    return true;
-  }
-
-  checkAdmin() {
-    return this.checkUser() && this.getType('Admin');
-  }
-
-  checkTeacher() {
-    return this.checkUser() && this.getType('Teacher');
+  getCookies() {
+    let cookies: any = decodeURIComponent( document.cookie );
+    if ( cookies[ cookies.length - 1 ] != ';' ) cookies += ';';
+    cookies = cookies.split( ';' );
+    cookies.pop();
+    let cookiesObject = new Object;
+    for ( let cookie of cookies ) {
+      let key = cookie.split( '=' )[ 0 ];
+      let value = cookie.split( '=' )[ 1 ];
+      cookiesObject[ key ] = value;
+    }
+    return cookiesObject;
   }
 
   checkAuth() {
-    return this.checkUser() && this.getType('Auth');
+    let cookies: any = this.getCookies();
+    return cookies[ "authority" ] == "Auth";
   }
 
-  checkUser() {
-    return decodeURIComponent( document.cookie ).includes('user=');
+  checkTeacher() {
+    let cookies: any = this.getCookies();
+    return cookies[ "authority" ] == "Teacher";
   }
 
-  setCookie( val: string ) {
+  /*
+   getType() {
+   return parseInt( decodeURIComponent( document.cookie ).split( ';' ).pop()[ 1 ] );
+   }
+
+   getId() {
+   return decodeURIComponent( document.cookie ).split( ';' ).pop().substring( 2 );
+   }
+
+   checkAdmin() {
+   return this.checkUser() && this.getType() == 0 && this.getId() == 'admin';
+   }
+
+   checkTeacher() {
+   return this.checkUser() && this.getType() <= 1;
+   }
+
+   _checkAuth() {
+   return this.checkUser() && this.getType() <= 2;
+   }
+
+   checkUser() {
+   return !(this.getId() == 'undefined' || this.getId() == '');
+   }
+   */
+  clearCookie() {
+    document.cookie = "authority=;";
+  }
+
+  createCookie( val: string ) {
     document.cookie = val;
   }
 

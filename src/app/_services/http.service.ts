@@ -23,13 +23,13 @@ export class HttpService {
 
   checkUser( userid ) {
     return this.http.get( this.backend_domain + ':' + this.backend_port + "/api/checkUser" + userid )
-      .map( ( response: Response ) => JSON.parse( response["_body"] ) ).catch( this.handleError );
+      .map( ( response: Response ) => JSON.parse( response[ "_body" ] ) ).catch( this.handleError );
   }
 
   checkAuth( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
     return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/checkAuth", this.urlEncode( data ), { headers: headers } )
-      .map( ( data: Response ) => data ).catch( this.handleError );
+      .map( ( data: Response ) => JSON.parse( data[ "_body" ] ) ).catch( this.handleError );
   }
 
   getBookData() {

@@ -29,18 +29,19 @@ export class LoginComponent {
   }
 
   check( data ) {
-    if ( data.authority == "Teacher" ) {
-      Materialize.toast( 'Welcome Teacher ' + this.userId, 1000 );
+    if ( data[ "authority" ] == "Auth" ) {
+      this.cookie.createCookie("authority=Auth;");
+      Materialize.toast( 'Welcome Auth : ' + this.userId, 1000 );
       setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
     }
-    else if ( data.authority == "Auth" ) {
-      Materialize.toast( 'Welcome User ' + this.userId, 1000 );
+    else if ( data[ "authority" ] == "Teacher" ) {
+      this.cookie.createCookie("authority=Teacher;");
+      Materialize.toast( 'Welcome Teacher : ' + this.userId, 1000 );
       setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
     }
     else {
-      Materialize.toast( 'Failed to Login : ' + data.message, 1000 );
+      Materialize.toast( 'You are not authorize : ' + data[ "message" ], 1000 );
     }
-
   }
 
 }

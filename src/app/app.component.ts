@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 
-@Component({
+@Component( {
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  host: {
-    class:'sticky-wrapper'
-  }
-})
+  styleUrls: [ './app.component.scss' ],
+  host: { class: 'sticky-wrapper' }
+} )
 export class AppComponent {
 }

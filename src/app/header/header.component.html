@@ -6,6 +6,7 @@
       <li><a *ngIf="admin == true" [routerLink]="'manage'">管理</a></li>
       <li><a *ngIf="login == false" [routerLink]="'login'" >登入</a></li>
       <template [ngIf]="login == true">
+        <li><a [routerLink]="''"> {{ cookie.getCookies()["authority"] }} </a></li>
         <li><a (click)="onClicked()">登出</a></li>
       </template>
     </ul>

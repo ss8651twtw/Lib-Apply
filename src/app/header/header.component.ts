@@ -1,29 +1,24 @@
-import {Component, DoCheck} from '@angular/core';
-import {CookieService} from "../_services/cookie.service";
+import { Component, DoCheck } from '@angular/core';
+import { CookieService } from "../_services/cookie.service";
 
-@Component({
+@Component( {
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
-})
+  styleUrls: [ './header.component.scss' ]
+} )
 export class HeaderComponent implements DoCheck {
 
-  constructor(private cookie: CookieService) { }
+  constructor( private cookie: CookieService ) { }
 
   login: boolean = false;
   admin: boolean = false;
 
   ngDoCheck() {
-    if (this.cookie.checkUser()) {
-      this.login = true;
-      if (this.cookie.checkAdmin()) {
-        this.admin = true;
-      }
-    }
+    this.login = ( this.cookie.checkAuth() || this.cookie.checkTeacher() );
   }
 
   onClicked() {
-    this.cookie.setCookie('');
+    this.cookie.clearCookie();
     this.login = false;
     this.admin = false;
   }
