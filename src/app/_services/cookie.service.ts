@@ -6,28 +6,25 @@ export class CookieService {
   constructor() {
   }
 
-  getType() {
-    return parseInt( decodeURIComponent( document.cookie ).split( ';' ).pop()[ 1 ] );
-  }
-
-  getId() {
-    return decodeURIComponent( document.cookie ).split( ';' ).pop().substring( 2 );
+  getType(type: string) {
+    //return decodeURIComponent( document.cookie ).includes('Type=' + type);
+    return true;
   }
 
   checkAdmin() {
-    return this.checkUser() && this.getType() == 0 && this.getId() == 'admin';
+    return this.checkUser() && this.getType('Admin');
   }
 
   checkTeacher() {
-    return this.checkUser() && this.getType() <= 1;
+    return this.checkUser() && this.getType('Teacher');
   }
 
   checkAuth() {
-    return this.checkUser() && this.getType() <= 2;
+    return this.checkUser() && this.getType('Auth');
   }
 
   checkUser() {
-    return !(this.getId() == 'undefined' || this.getId() == '');
+    return decodeURIComponent( document.cookie ).includes('user=');
   }
 
   setCookie( val: string ) {

@@ -25,11 +25,22 @@ export class LoginComponent {
     this.userPwd = form[ 'value' ][ 'userpwd' ];
 
     this.http.checkAuth( { userId: this.userId, userPwd: this.userPwd } )
-      .subscribe( data => this.check( data ) );
+      .subscribe( data => this.check( JSON.parse(data._body) ) );
   }
 
   check( data ) {
-    console.log( data );
+    if ( data.authority == "Teacher" ) {
+      Materialize.toast( 'Welcome Teacher ' + this.userId, 1000 );
+      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
+    }
+    else if ( data.authority == "Auth" ) {
+      Materialize.toast( 'Welcome User ' + this.userId, 1000 );
+      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
+    }
+    else {
+      Materialize.toast( 'Failed to Login : ' + data.message, 1000 );
+    }
+
   }
 
 }
