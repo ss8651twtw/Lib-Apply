@@ -1,10 +1,21 @@
-<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
-  <label>完全行為能力人</label>
-  <input type="radio" ngModel name="adult" value="yes">是
-  <input type="radio" ngModel name="adult" value="no">否
-  <br>
-  *如果您未滿20歲，或有其他民法上行為能力之欠缺事由，
-  請勾選否。
-  <br>
-  <button type="submit">送出</button>
-</form>
+<app-pageform>
+  <form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+    <br><br><br>
+    <label>完全行為能力人</label>
+    <p>
+      <input type="radio" ngModel name="adult" value="yes" id="yes">
+      <label for="yes">是</label>
+    </p>
+    <p>
+      <input type="radio" ngModel name="adult" value="no" id="no">
+      <label for="no">否</label>
+    </p>
+    <br><br>
+    *如果您未滿20歲，或有其他民法上行為能力之欠缺事由，
+    請勾選否。
+    <br>
+    <div class="submit">
+      <button type="submit" class="waves-effect waves-light btn">送出</button>
+    </div>
+  </form>
+</app-pageform>

@@ -10,9 +10,7 @@ declare var Materialize: any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
-  host: {
-    class: "app-wrapper"
-  },
+  host: { class: "app-wrapper" },
   providers: [ HttpService ]
 } )
 export class LoginComponent {
@@ -27,29 +25,11 @@ export class LoginComponent {
     this.userPwd = form[ 'value' ][ 'userpwd' ];
 
     this.http.checkAuth( { userId: this.userId, userPwd: this.userPwd } )
-      .subscribe( data => this.secondStage( data ) );
+      .subscribe( data => this.check( data ) );
   }
 
-  secondStage( first_data ) {
-    this.http.checkTeacher( { userId: this.userId, userPwd: this.userPwd } )
-      .subscribe( data => this.finalStage( first_data, data ) );
-  }
-
-  finalStage( first_data, second_data ) {
-    console.log( first_data );
-    console.log( second_data );
-    if ( second_data.status == 200 ) {
-      Materialize.toast( 'Welcome Teacher ' + this.userId, 1000 );
-      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
-    }
-    else if ( first_data.status == 200 ) {
-      Materialize.toast( 'Welcome User ' + this.userId, 1000 );
-      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
-    }
-    else {
-      console.log( first_data );
-      Materialize.toast( 'Failed to Login : ' + first_data.message, 1000 );
-    }
+  check( data ) {
+    console.log( data );
   }
 
 }

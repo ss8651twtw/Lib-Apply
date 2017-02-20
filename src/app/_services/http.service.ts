@@ -8,7 +8,7 @@ export class HttpService {
 
   localhost: string = "http://127.0.0.1";
   frozenkp: string = "http://frozenkp.com.tw";
-  backend_domain: string = this.localhost;
+  backend_domain: string = this.frozenkp;
   backend_port: string = "8000";
 
   constructor( private http: Http ) { }
@@ -29,13 +29,7 @@ export class HttpService {
   checkAuth( data: any ) {
     const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
     return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/checkAuth", this.urlEncode( data ), { headers: headers } )
-      .map( ( data: Response ) => JSON.parse( data["_body"] ) ).catch( this.handleError );
-  }
-
-  checkTeacher( data: any ) {
-    const headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
-    return this.http.post( this.backend_domain + ':' + this.backend_port + "/api/checkTeacher", this.urlEncode( data ), { headers: headers } )
-      .map( ( response: Response ) => JSON.parse( response["_body"] ) ).catch( this.handleError );
+      .map( ( data: Response ) => data ).catch( this.handleError );
   }
 
   getBookData() {
