@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { HttpService } from "../_services/http.service"
 
+declare var Materialize: any;
+
 @Component( {
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -19,7 +21,7 @@ export class BookComponent implements DoCheck {
 
   ngDoCheck() {
     if ( this.cookie.checkTeacher() == false ) {
-      alert( '進不去QQ' );
+      Materialize.toast( 'You are not authorize...' , 1000 );
       this.router.navigate( [ '' ] );
     }
   }

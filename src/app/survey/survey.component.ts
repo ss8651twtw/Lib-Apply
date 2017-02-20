@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { HttpService } from "../_services/http.service";
 
+declare var Materialize: any;
+
 @Component( {
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -28,7 +30,7 @@ export class SurveyComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     if ( this.cookie.checkAuth() == false ) {
-      alert( '進不去QQ' );
+      Materialize.toast( 'You are not authorize...' , 1000 );
       this.router.navigate( [ '' ] );
     }
   }
