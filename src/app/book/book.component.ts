@@ -1,33 +1,26 @@
 import { Component, DoCheck } from '@angular/core';
-import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { HttpService } from "../_services/http.service"
-
-declare var Materialize: any;
+import { CookieService } from "../_services/cookie.service";
+import { RequestService } from "../_services/request.service"
 
 @Component( {
   selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: [ './book.component.scss' ],
+  templateUrl: 'book.component.html',
+  styleUrls: [ 'book.component.scss' ],
   host: { class: 'app-wrapper' },
-  providers: [ HttpService ]
+  providers: [ RequestService ]
 } )
 export class BookComponent implements DoCheck {
 
-  constructor( private http: HttpService, private cookie: CookieService, private router: Router ) { }
+  constructor( private request: RequestService, private cookie: CookieService, private router: Router ) { }
 
   enable_second: boolean = false;
 
-  ngDoCheck() {
-    if ( this.cookie.checkTeacher() == false ) {
-      Materialize.toast( 'You are not authorize...' , 1000 );
-      this.router.navigate( [ '' ] );
-    }
-  }
+  ngDoCheck() { }
 
   onSubmitted( form: NgForm ) {
-    this.http.sendBookData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
+    this.request.sendBookData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
   }
 
   setEnableSecond() {

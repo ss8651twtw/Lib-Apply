@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from "../../_services/http.service";
+import { RequestService } from "../../_services/request.service";
 
 @Component( {
   selector: 'app-manage-survey',
   templateUrl: 'manage-survey.component.html',
   styleUrls: [ 'manage-survey.component.scss' ],
   host: { class: "app-wrapper" },
-  providers: [ HttpService ]
+  providers: [ RequestService ]
 } )
 export class ManageSurveyComponent implements OnInit {
 
   applyForms: any;
 
-  constructor( private http: HttpService ) { }
+  constructor( private request: RequestService ) { }
 
-  ngOnInit() { this.http.getSurveyData().subscribe( data => this.applyForms = data[ "data" ] );}
+  ngOnInit() { this.request.getSurveyData().subscribe( data => this.applyForms = data[ "data" ] );}
 
 }

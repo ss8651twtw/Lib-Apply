@@ -1,0 +1,54 @@
+@import "../../../_vars";
+
+.envelope-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: $envelope-size*16;
+  height: $envelope-size*10;
+}
+
+.envelope-body {
+  position: absolute;
+  width: $envelope-size*16;
+  height: $envelope-size*10;
+  background-color: #0431B4;
+  top: $envelope-size*3;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: $envelope-size*5 $envelope-size*8 $envelope-size*5 $envelope-size*8;
+    border-color: transparent transparent #0431B4 transparent;
+    top: $envelope-size*-10;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: $envelope-size*5 $envelope-size*8 $envelope-size*5 $envelope-size*8;
+    border-color: transparent #00BFFF #01DFD7 #01DFD7;
+    z-index: 1;
+  }
+}
+
+.envelope-paper {
+  position: absolute;
+  width: $envelope-size*13;
+  height: $envelope-size*12;
+  background-color: white;
+  top: -$envelope-size*4;
+  padding: 20px;
+}
+
+.username {
+
+}
+
+.password {
+
+}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
-import { HttpService } from "../_services/http.service";
+import { AuthService } from "../_services/auth.service";
 
 declare var Materialize: any;
 
@@ -11,37 +11,54 @@ declare var Materialize: any;
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
   host: { class: "app-wrapper" },
-  providers: [ HttpService ]
 } )
 export class LoginComponent {
 
-  constructor( private http: HttpService, private cookie: CookieService, private router: Router ) { }
+  constructor( private auth: AuthService, private cookie: CookieService, private router: Router ) { }
 
-  private userId: string;
-  private userPwd: string;
+  private username: string;
+  private password: string;
 
   onSubmitted( form: NgForm ) {
-    this.userId = form[ 'value' ][ 'userid' ];
-    this.userPwd = form[ 'value' ][ 'userpwd' ];
+    this.username = form[ 'value' ][ 'username' ];
+    this.password = form[ 'value' ][ 'password' ];
 
-    this.http.checkAuth( { userId: this.userId, userPwd: this.userPwd } )
+    this.auth.login( { userId: this.username, userPwd: this.password } )
       .subscribe( data => this.check( data ) );
   }
 
   check( data ) {
-    if ( data[ "authority" ] == "Auth" ) {
-      this.cookie.createCookie("authority=Auth;");
-      Materialize.toast( 'Welcome Auth : ' + this.userId, 1000 );
-      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
-    }
-    else if ( data[ "authority" ] == "Teacher" ) {
-      this.cookie.createCookie("authority=Teacher;");
-      Materialize.toast( 'Welcome Teacher : ' + this.userId, 1000 );
-      setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
+    console.log( data );
+    let authority = data[ "authority" ];
+    if ( authority == "Auth" || authority == "Teacher" ) {
+      this.auth.isLoggedIn = true;
+      this.auth.authority = authority;
+      this.auth.username = this.username;
+      this.auth.cookie = document.cookie;
+      let redirect = this.auth.redirectUrl ? this.auth.redirectUrl : '/';
+      Materialize.toast( 'Welcome ' + this.username, 1000 );
+      setTimeout( () => this.router.navigate( [ redirect ] ), 1500 );
     }
     else {
-      Materialize.toast( 'You are not authorize : ' + data[ "message" ], 1000 );
+      Materialize.toast( 'Error : ' + data[ "message" ], 1000 );
     }
   }
 
+  /*
+   check( data ) {
+   if ( data[ "authority" ] == "Auth" ) {
+   this.cookie.createCookie( "authority=Auth;" );
+   Materialize.toast( 'Welcome Auth : ' + this.userId, 1000 );
+   setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
+   }
+   else if ( data[ "authority" ] == "Teacher" ) {
+   this.cookie.createCookie( "authority=Teacher;" );
+   Materialize.toast( 'Welcome Teacher : ' + this.userId, 1000 );
+   setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
+   }
+   else {
+   Materialize.toast( 'You are not authorize : ' + data[ "message" ], 1000 );
+   }
+   }
+   */
 }

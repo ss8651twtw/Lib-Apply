@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from "../../_services/http.service";
+import { RequestService } from "../../_services/request.service";
 
 @Component( {
   selector: 'app-manage-book',
   templateUrl: 'manage-book.component.html',
   styleUrls: [ 'manage-book.component.scss' ],
   host: { class: "app-wrapper" },
-  providers: [ HttpService ]
+  providers: [ RequestService ]
 } )
 export class ManageBookComponent implements OnInit {
 
   applyForms: any;
 
-  constructor( private http: HttpService ) { }
+  constructor( private request: RequestService ) { }
 
-  ngOnInit() { this.http.getBookData().subscribe( data => this.applyForms = data["data"] ); }
+  ngOnInit() { this.request.getBookData().subscribe( data => this.applyForms = data["data"] ); }
 
 }
