@@ -6,16 +6,9 @@ import { ManageSurveyComponent } from "./manage-survey/manage-survey.component";
 import { ManageBookComponent } from "./manage-book/manage-book.component";
 
 const adminRoutes: Routes = [
-  {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [ AuthGuardService ],
-    canActivateChild: [ AuthGuardService ],
-    children: [
-      { path: 'book', component: ManageBookComponent },
-      { path: 'survey', component: ManageSurveyComponent }
-    ]
-  }
+  { path: 'admin', canActivate: [ AuthGuardService ], component: AdminComponent },
+  { path: 'admin/book', canActivate: [ AuthGuardService ], component: ManageBookComponent },
+  { path: 'admin/survey', canActivate: [ AuthGuardService ], component: ManageSurveyComponent }
 ];
 
 @NgModule( {

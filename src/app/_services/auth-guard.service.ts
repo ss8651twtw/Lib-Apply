@@ -10,7 +10,7 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
 
   canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
     let url: string = state.url;
-    if ( url.substring( 0, 6 ) == "/admin" ) return this.checkLogin( url, "Auth" );
+    if ( url.substring( 0, 6 ) == "/admin" ) return this.checkLogin( url, "Admin" );
     else if ( url.substring( 0, 7 ) == "/book" ) return this.checkLogin( url, "Teacher" );
     else if ( url.substring( 0, 7 ) == "/survey" ) return this.checkLogin( url, "Auth" );
     else console.log( "Shit happened in auth-guard.service.ts line 16..." );
@@ -25,7 +25,7 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
     this.auth.redirectUrl = url;
 
     if ( this.auth.isLoggedIn ) {
-      if ( this.auth.authority == authority ) { return true; }
+      if ( this.getLevel( this.auth.authority ) >= this.getLevel( authority ) ) { return true; }
       else {
         Materialize.toast( 'You are not authorize', 1000 );
         this.router.navigate( [ '' ] );
@@ -37,5 +37,12 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
       this.router.navigate( [ '/login' ] );
       return false;
     }
+  }
+
+  getLevel( authority: string ) {
+    if ( authority == "Admin" )return 3;
+    else if ( authority == "Teacher" )return 2;
+    else if ( authority == "Auth" )return 1;
+    else return 0;
   }
 }
