@@ -1,42 +1,35 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { CookieService } from "../_services/cookie.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { HttpService } from "../_services/http.service";
-
-declare var Materialize: any;
+import { CookieService } from "../_services/cookie.service";
+import { RequestService } from "../_services/request.service";
 
 @Component( {
   selector: 'app-survey',
-  templateUrl: './survey.component.html',
-  styleUrls: [ './survey.component.scss' ],
+  templateUrl: 'survey.component.html',
+  styleUrls: [ 'survey.component.scss' ],
   host: { class: 'app-wrapper' },
-  providers: [ HttpService ]
+  providers: [ RequestService ]
 } )
 export class SurveyComponent implements OnInit, DoCheck {
 
-  constructor( private http: HttpService, private cookie: CookieService, private router: Router ) { }
+  constructor( private request: RequestService, private cookie: CookieService, private router: Router ) { }
 
   applydate: string;
   enable_second: boolean = false;
 
   ngOnInit() {
-    var dd = new Date();
-    var y = dd.getFullYear();
-    var m = dd.getMonth() + 1;
-    var d = dd.getDate();
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
     this.applydate = y + '-' + m + '-' + d;
   }
 
-  ngDoCheck() {
-    if ( this.cookie.checkAuth() == false ) {
-      Materialize.toast( 'You are not authorize...' , 1000 );
-      this.router.navigate( [ '' ] );
-    }
-  }
+  ngDoCheck() { }
 
   onSubmitted( form: NgForm ) {
-    this.http.sendSurveyData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
+    this.request.sendSurveyData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
   }
 
   setEnableSecond() {
