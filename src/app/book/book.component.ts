@@ -8,7 +8,6 @@ import { RequestService } from "../_services/request.service"
   selector: 'app-book',
   templateUrl: 'book.component.html',
   styleUrls: [ 'book.component.scss' ],
-  host: { class: 'app-wrapper' },
   providers: [ RequestService ]
 } )
 export class BookComponent implements DoCheck {
