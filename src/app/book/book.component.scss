@@ -1,6 +1,9 @@
 @import "../../_vars";
 
 form {
+  width: 100%;
+  min-height: 85.9vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
