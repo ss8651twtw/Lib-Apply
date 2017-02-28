@@ -31,3 +31,38 @@
     left: 20px
   }
 }
+
+@media screen and (max-width: 500px){
+  .page {
+    position: relative;
+    width: 80vw;
+    height: 70vh;
+    background-color: white;
+    padding: 70px 50px 0 50px;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent $background-color transparent transparent;
+      border-width: 60px;
+      transform: rotate(45deg);
+      top: -70px;
+      left: -65px;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 50px 50px 50px 50px;
+      border-color: transparent transparent transparent #E6E6E6;
+      transform: rotate(45deg);
+      top: 20px;
+      left: 20px
+    }
+  }
+
+}

@@ -8,7 +8,6 @@ import { RequestService } from "../_services/request.service";
   selector: 'app-survey',
   templateUrl: 'survey.component.html',
   styleUrls: [ 'survey.component.scss' ],
-  host: { class: 'app-wrapper' },
   providers: [ RequestService ]
 } )
 export class SurveyComponent implements OnInit, DoCheck {
