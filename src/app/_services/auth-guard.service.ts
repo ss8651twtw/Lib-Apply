@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
 import { AuthService } from "./auth.service";
+import { CookieService } from "./cookie.service";
 
 declare var Materialize: any;
 
 @Injectable()
 export class AuthGuardService implements CanActivate,CanActivateChild {
-  constructor( private auth: AuthService, private router: Router ) {}
+  constructor( private cookie: CookieService, private auth: AuthService, private router: Router ) {}
 
   canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
     let url: string = state.url;
@@ -24,7 +25,7 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
     // Store the attempted URL for redirecting
     this.auth.redirectUrl = url;
 
-    if ( this.auth.isLoggedIn ) {
+    if ( this.cookie.getCookie("login") == "true" ) {
       if ( this.getLevel( this.auth.authority ) >= this.getLevel( authority ) ) { return true; }
       else {
         Materialize.toast( 'You are not authorize', 1000 );

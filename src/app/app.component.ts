@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "./_services/auth.service";
+import { CookieService } from "./_services/cookie.service";
 
 @Component( {
   selector: 'app-root',
@@ -9,20 +10,11 @@ import { AuthService } from "./_services/auth.service";
 } )
 export class AppComponent implements OnInit {
 
-  constructor( private auth: AuthService ) {}
+  constructor( private cookie: CookieService, private auth: AuthService ) {}
 
   ngOnInit() {
-    if ( document.cookie ) {
-      let cookies = new Object();
-      let originCookies = document.cookie.split( ' ' );
-      for ( let i in originCookies ) {
-        let _ = originCookies[ i ].split( '=' );
-        cookies[ _[ 0 ] ] = _[ 1 ];
-      }
-      if ( "Type" in cookies ) {
-        this.auth.isLoggedIn = true;
-        this.auth.authority = cookies[ "Type" ];
-      }
+    if ( this.cookie.getCookie("login") == "true" ){
+      this.auth.authority = this.cookie.getCookie("Type");
     }
   }
 }

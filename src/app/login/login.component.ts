@@ -31,7 +31,7 @@ export class LoginComponent {
     console.log( data );
     let authority = data[ "authority" ];
     if ( authority == "Admin" || authority == "Auth" || authority == "Teacher" ) {
-      this.auth.isLoggedIn = true;
+      document.cookie = "login=true";
       this.auth.authority = authority;
       let redirect = this.auth.redirectUrl ? this.auth.redirectUrl : '/';
       Materialize.toast( 'Welcome ' + this.username, 1000 );
