@@ -8,18 +8,13 @@ export class RequestService {
 
   constructor( private http: Http, private httpConfig: HttpConfigService, private auth: AuthService ) { }
 
-  checkUser( userid ) {
-    return this.http.get( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/checkUser" + userid )
-      .map( ( response: Response ) => JSON.parse( response[ "_body" ] ) ).catch( this.httpConfig.handleError );
-  }
-
   getBookData() {
-    return this.http.get( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/book" )
+    return this.http.get( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/book", { withCredentials: true } )
       .map( ( response: Response ) => response.json() ).catch( this.httpConfig.handleError );
   }
 
   getSurveyData() {
-    return this.http.get( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/survey" )
+    return this.http.get( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/survey", { withCredentials: true } )
       .map( ( response: Response ) => response.json() ).catch( this.httpConfig.handleError );
   }
 

@@ -5,10 +5,7 @@
       <li><a [routerLink]="''">首頁</a></li>
       <li><a *ngIf="true" [routerLink]="'admin'">管理</a></li>
       <li><a *ngIf="auth.isLoggedIn == false" [routerLink]="'login'">登入</a></li>
-      <template [ngIf]="auth.isLoggedIn == true">
-        <li><a [routerLink]="''"> {{ auth.username }} </a></li>
-        <li><a (click)="auth.logout()">登出</a></li>
-      </template>
+      <li><a *ngIf="auth.isLoggedIn == true" (click)="auth.logout()">登出</a></li>
     </ul>
   </div>
 </nav>

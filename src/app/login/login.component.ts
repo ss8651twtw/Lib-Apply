@@ -42,22 +42,4 @@ export class LoginComponent {
       Materialize.toast( 'Error : ' + data[ "message" ], 1000 );
     }
   }
-
-  /*
-   check( data ) {
-   if ( data[ "authority" ] == "Auth" ) {
-   this.cookie.createCookie( "authority=Auth;" );
-   Materialize.toast( 'Welcome Auth : ' + this.userId, 1000 );
-   setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
-   }
-   else if ( data[ "authority" ] == "Teacher" ) {
-   this.cookie.createCookie( "authority=Teacher;" );
-   Materialize.toast( 'Welcome Teacher : ' + this.userId, 1000 );
-   setTimeout( () => this.router.navigate( [ '' ] ), 1500 );
-   }
-   else {
-   Materialize.toast( 'You are not authorize : ' + data[ "message" ], 1000 );
-   }
-   }
-   */
 }
