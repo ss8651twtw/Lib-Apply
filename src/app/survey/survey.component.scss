@@ -1,7 +1,14 @@
+@import "../../_vars";
+
 form {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
 }
 
 app-pageform {
   margin: 80px;
+  padding: 50px;
 }
