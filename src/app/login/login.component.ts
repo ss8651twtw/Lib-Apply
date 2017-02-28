@@ -30,7 +30,7 @@ export class LoginComponent {
   check( data ) {
     console.log( data );
     let authority = data[ "authority" ];
-    if ( authority == "Auth" || authority == "Teacher" ) {
+    if ( authority == "Admin" || authority == "Auth" || authority == "Teacher" ) {
       this.auth.isLoggedIn = true;
       this.auth.authority = authority;
       this.auth.username = this.username;

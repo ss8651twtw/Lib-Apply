@@ -24,12 +24,12 @@ export class RequestService {
   }
 
   sendBookData( data: any ) {
-    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/book", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers } )
+    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/book", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } )
       .map( ( data: Response ) => data ).catch( this.httpConfig.handleError );
   }
 
   sendSurveyData( data: any ) {
-    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/survey", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers } )
+    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/survey", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } )
       .map( ( data: Response ) => data ).catch( this.httpConfig.handleError );
   }
 
