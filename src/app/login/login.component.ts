@@ -34,7 +34,6 @@ export class LoginComponent {
       this.auth.isLoggedIn = true;
       this.auth.authority = authority;
       this.auth.username = this.username;
-      this.auth.cookie = document.cookie;
       let redirect = this.auth.redirectUrl ? this.auth.redirectUrl : '/';
       Materialize.toast( 'Welcome ' + this.username, 1000 );
       setTimeout( () => this.router.navigate( [ redirect ] ), 1500 );

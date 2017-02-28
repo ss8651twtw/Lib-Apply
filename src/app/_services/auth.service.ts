@@ -16,7 +16,6 @@ export class AuthService {
   isLoggedIn: boolean = false;
   authority: string;
   username: string;
-  cookie: string;
   redirectUrl: string;
 
   login( data ) {
