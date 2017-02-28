@@ -8,14 +8,8 @@ export class AuthService {
 
   constructor( private http: Http, private httpConfig: HttpConfigService ) { }
 
-  /* Super Mode
-   isLoggedIn: boolean = true;
-   authority: string = "Admin";
-   */
-
   isLoggedIn: boolean = false;
   authority: string;
-  username: string;
   redirectUrl: string;
 
   login( data ) {

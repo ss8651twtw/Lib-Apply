@@ -33,7 +33,6 @@ export class LoginComponent {
     if ( authority == "Admin" || authority == "Auth" || authority == "Teacher" ) {
       this.auth.isLoggedIn = true;
       this.auth.authority = authority;
-      this.auth.username = this.username;
       let redirect = this.auth.redirectUrl ? this.auth.redirectUrl : '/';
       Materialize.toast( 'Welcome ' + this.username, 1000 );
       setTimeout( () => this.router.navigate( [ redirect ] ), 1500 );
