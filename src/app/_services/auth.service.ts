@@ -8,7 +8,6 @@ export class AuthService {
 
   constructor( private http: Http, private httpConfig: HttpConfigService ) { }
 
-  authority: string;
   redirectUrl: string;
 
   login( data ) {
@@ -18,7 +17,6 @@ export class AuthService {
 
   logout(): void {
     document.cookie = "login=false";
-    this.authority = "";
   }
 
 }

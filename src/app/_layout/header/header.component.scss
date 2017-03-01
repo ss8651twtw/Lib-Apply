@@ -8,13 +8,13 @@ nav {
   li > a {
     font-size: 20px;
   }
-  .right{
+  .right {
     position: relative;
     left: 200px;
     padding: 10px;
     top: -1.2vh;
   }
-  .brand-logo{
+  .brand-logo {
     position: relative;
     right: 200px;
   }
@@ -27,23 +27,24 @@ nav {
   margin: 10px;
 }
 
-@media screen and(max-width: 1000px) and (min-width: 391px){
-  nav .right{
+@media screen and(max-width: 1000px) and (min-width: 391px) {
+  nav .right {
     top: 6.8vh;
     left: -7vw;
     z-index: 2;
   }
-  nav .brand-logo{
+  nav .brand-logo {
     right: 0px;
   }
 }
-@media screen and(max-width: 391px){
-  nav .right{
+
+@media screen and(max-width: 391px) {
+  nav .right {
     top: 0vh;
     left: -70px;
     z-index: 2;
   }
-  nav .brand-logo{
+  nav .brand-logo {
     right: 0px;
   }
 }
