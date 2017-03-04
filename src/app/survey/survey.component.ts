@@ -28,7 +28,9 @@ export class SurveyComponent implements OnInit, DoCheck {
   ngDoCheck() { }
 
   onSubmitted( form: NgForm ) {
-    this.request.sendSurveyData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
+    let formData = form['value'];
+    formData['time'] = this.applydate;
+    this.request.sendSurveyData( formData ).subscribe( data => console.log( data ), error => console.log( error ) );
   }
 
   setEnableSecond() {

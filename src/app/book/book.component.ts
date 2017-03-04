@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { CookieService } from "../_services/cookie.service";
@@ -10,16 +10,25 @@ import { RequestService } from "../_services/request.service"
   styleUrls: [ 'book.component.scss' ],
   providers: [ RequestService ]
 } )
-export class BookComponent implements DoCheck {
+export class BookComponent implements OnInit {
 
   constructor( private request: RequestService, private cookie: CookieService, private router: Router ) { }
 
   enable_second: boolean = false;
+  applydate: string;
 
-  ngDoCheck() { }
+  ngOnInit() {
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
+    this.applydate = y + '-' + m + '-' + d;
+  }
 
   onSubmitted( form: NgForm ) {
-    this.request.sendBookData( form[ 'value' ] ).subscribe( data => console.log( data ), error => console.log( error ) );
+    let formData = form['value'];
+    formData['time'] = this.applydate;
+    this.request.sendBookData( formData ).subscribe( data => console.log( data ), error => console.log( error ) );
   }
 
   setEnableSecond() {
