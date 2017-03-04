@@ -2,18 +2,20 @@
   <app-pageform>
     <br>
     <label>姓名</label>
-    <input type="text" ngModel name="name">
+    <input type="text" ngModel required name="name">
     <br>
     <label>申請日期</label>
     {{applydate}}
     <br><br>
     <label>請求事項</label>
-    <select class="browser-default" ngModel name="method">
-      <option value="" selected>停止蒐集、處理與利用</option>
+    <select class="browser-default" ngModel required name="method">
+      <option value="" selected>請選擇</option>
+      <option value="stop">停止蒐集、處理與利用</option>
       <option value="delete">資料刪除</option>
     </select>
-    <select class="browser-default" ngModel name="event">
-      <option value="" selected>當事人所有個資</option>
+    <select class="browser-default" ngModel required name="event">
+      <option value="" selected>請選擇</option>
+      <option value="all">當事人所有個資</option>
       <option value="address">通訊/戶籍地址</option>
       <option value="id">身分證字號</option>
       <option value="phone">電話/手機號碼</option>
@@ -26,14 +28,15 @@
   <app-pageform [hidden]="!enable_second">
     <br>
     <label>原因說明</label>
-    <input type="text" ngModel name="reason">
+    <input type="text" ngModel required name="reason">
     <br><br>
     <label>回覆方式</label>
-    <select class="browser-default" ngModel name="touch">
-      <option value="" selected>Email</option>
+    <select class="browser-default" ngModel required name="touch">
+      <option value="" selected>請選擇</option>
+      <option value="email">Email</option>
       <option value="phone">電話連繫</option>
     </select>
-    <input type="text" ngModel name="reply">
+    <input type="text" ngModel required name="reply">
     <br>
     <div class="submit">
       <button type="submit" class="waves-effect waves-light btn">submit</button>
