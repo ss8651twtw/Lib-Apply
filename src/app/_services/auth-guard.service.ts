@@ -26,7 +26,7 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
     this.auth.redirectUrl = url;
 
     if ( this.cookie.getCookie( "login" ) == "true" ) {
-      if ( this.getLevel( this.cookie.getCookie( "Type" ) ) >= this.getLevel( authority ) ) { return true; }
+      if ( this.getLevel( this.cookie.getCookie( "type" ) ) >= this.getLevel( authority ) ) { return true; }
       else {
         Materialize.toast( 'You are not authorize', 1000 );
         this.router.navigate( [ '' ] );
