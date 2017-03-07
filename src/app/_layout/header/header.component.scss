@@ -27,7 +27,7 @@ nav {
   margin: 10px;
 }
 
-@media screen and(max-width: 1000px) and (min-width: 391px) {
+@media screen and(max-width: 1000px) and (min-width: 320px) {
   nav .right {
     top: 6.8vh;
     left: -7vw;
@@ -38,7 +38,7 @@ nav {
   }
 }
 
-@media screen and(max-width: 391px) {
+@media screen and(max-width: 320px) {
   nav .right {
     top: 0vh;
     left: -70px;
