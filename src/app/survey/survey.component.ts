@@ -4,6 +4,8 @@ import { NgForm } from "@angular/forms";
 import { CookieService } from "../_services/cookie.service";
 import { RequestService } from "../_services/request.service";
 
+declare var Materialize: any;
+
 @Component( {
   selector: 'app-survey',
   templateUrl: 'survey.component.html',
@@ -30,7 +32,16 @@ export class SurveyComponent implements OnInit, DoCheck {
   onSubmitted( form: NgForm ) {
     let formData = form['value'];
     formData['time'] = this.applydate;
-    this.request.sendSurveyData( formData ).subscribe( data => console.log( data ), error => console.log( error ) );
+    this.request.sendSurveyData( formData ).subscribe( data => this.showMessage( data ), error => console.log( error ) );
+  }
+
+  showMessage(data: string) {
+    console.log(data);
+    if (JSON.parse(data["_body"]).status == 200) {
+      Materialize.toast("已成功送出", 1000);
+      setTimeout( () => this.router.navigate([""]), 1500);
+    }
+    else Materialize.toast("送出失敗，請稍後再試", 1000);
   }
 
   setEnableSecond() {

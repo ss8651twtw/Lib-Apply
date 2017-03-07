@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { RequestService } from "../_services/request.service"
+
+declare var Materialize: any;
 
 @Component( {
   selector: 'app-card',
@@ -10,7 +13,7 @@ import { RequestService } from "../_services/request.service"
 } )
 export class CardComponent implements OnInit {
 
-  constructor( private request: RequestService ) { }
+  constructor( private request: RequestService, private router: Router ) { }
   
   current_page: number = 0;
   applydate: string;
@@ -47,4 +50,12 @@ export class CardComponent implements OnInit {
     formData['gmoney'] = !this.checkPerson;
   }
 
+  showMessage(data: string) {
+    console.log(data);
+    if (JSON.parse(data["_body"]).status == 200) {
+      Materialize.toast("已成功送出", 1000);
+      setTimeout( () => this.router.navigate([""]), 1500);
+    }
+    else Materialize.toast("送出失敗，請稍後再試", 1000);
+  }
 }
