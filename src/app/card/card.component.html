@@ -33,11 +33,13 @@
   <br>
   <label>連絡電話</label>
   <input type="text" ngModel required name="phone">
-  <div class="submit">
-    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
-  </div>
-  <div class="submit">
-    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  <div class="bottom">
+    <div class="submit">
+      <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+    </div>
+    <div class="submit">
+      <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+    </div>
   </div>
   </app-pageform>
   <app-pageform [hidden]="current_page!=2">
@@ -53,20 +55,24 @@
     <option value="visiting">客座教授</option>
     <option value="part-time">兼任教師</option>
   </select>
-  <div class="submit">
-    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
-  </div>
-  <div class="submit">
-    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  <div class="bottom">
+    <div class="submit">
+      <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+    </div>
+    <div class="submit">
+      <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+    </div>
   </div>
   </app-pageform>
   <app-pageform [hidden]="current_page!=3">
   <label>上傳資料</label>
-  <div class="submit">
-    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
-  </div>
-  <div class="submit">
-    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  <div class="bottom">
+    <div class="submit">
+      <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+    </div>
+    <div class="submit">
+      <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+    </div>
   </div>
   </app-pageform>
   <app-pageform [hidden]="current_page!=4">
@@ -83,11 +89,13 @@
   </div>
   <input type="radio" (click)="money()" class="with-gap" required name="guarantee" id="money">
   <label for="money">願以保證金3000元整代替保證人</label>
-  <div class="submit">
-    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
-  </div>
-  <div class="submit">
-    <button type="submit" class="waves-effect waves-light btn">送出</button>
+  <div class="bottom">
+    <div class="submit">
+      <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+    </div>
+    <div class="submit">
+    <button type="submit" class="waves-effect waves-light btn"> 送出</button>
+    </div>
   </div>
   </app-pageform>
 </form>
