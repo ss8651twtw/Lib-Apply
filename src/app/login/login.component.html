@@ -2,11 +2,11 @@
   <div class="row">
     <form class="col s12" (ngSubmit)="onSubmitted(f)" #f="ngForm">
       <div class="input-field username">
-        <input type="text" class="validate" ngModel name="username">
+        <input type="text" class="validate" ngModel required name="username">
         <label>Username</label>
       </div>
       <div class="input-field password">
-        <input type="password" class="validate" ngModel name="password">
+        <input type="password" class="validate" ngModel required name="password">
         <label>Password</label>
       </div>
       <div type="submit" class="submit">
