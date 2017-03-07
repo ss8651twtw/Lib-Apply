@@ -1,21 +1,93 @@
-<app-pageform>
-  <form (ngSubmit)="onSubmitted(f)" #f="ngForm">
-    <br><br><br>
-    <label>完全行為能力人</label>
-    <p>
-      <input type="radio" ngModel name="adult" value="yes" id="yes">
-      <label for="yes">是</label>
-    </p>
-    <p>
-      <input type="radio" ngModel name="adult" value="no" id="no">
-      <label for="no">否</label>
-    </p>
-    <br><br>
-    *如果您未滿20歲，或有其他民法上行為能力之欠缺事由，
-    請勾選否。
-    <br>
-    <div class="submit">
-      <button type="submit" class="waves-effect waves-light btn">送出</button>
-    </div>
-  </form>
-</app-pageform>
+<form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+  <app-pageform [hidden]="current_page!=0">
+  <label>姓名</label>
+  <input type="text" ngModel required name="name">
+  <br>
+  <label>性別</label>
+  <br>
+  <input type="radio" (click)="male()" class="with-gap" required name="gender" id="male">
+  <label for="male">男</label>
+  <br>
+  <input type="radio" (click)="female()" class="with-gap" required name="gender" id="female">
+  <label for="female">女</label>
+  <br>
+  <label>身分證字號</label>
+  <input type="text" ngModel required name="id">
+  <br>
+  <label>單位系所</label>
+  <input type="text" ngModel required name="department">
+  <br>
+  <div class="submit">
+    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  </div>
+  </app-pageform>
+  <app-pageform [hidden]="current_page!=1">
+  <label>職稱</label>
+  <input type="text" ngModel required name="title">
+  <br>
+  <label>校內電話</label>
+  <input type="text" ngModel required name="extension">
+  <br>
+  <label>聯絡地址</label>
+  <input type="text" ngModel required name="address">
+  <br>
+  <label>連絡電話</label>
+  <input type="text" ngModel required name="phone">
+  <div class="submit">
+    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+  </div>
+  <div class="submit">
+    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  </div>
+  </app-pageform>
+  <app-pageform [hidden]="current_page!=2">
+  <label>Email</label>
+  <input type="email" ngModel required name="email">
+  <br>
+  <label>手機</label>
+  <input type="text" ngModel required name="cellphone">
+  <br>
+  <label>申請種類</label>
+  <select class="browser-default" ngModel required name="type">
+    <option value="" selected>請選擇</option>
+    <option value="visiting">客座教授</option>
+    <option value="part-time">兼任教師</option>
+  </select>
+  <div class="submit">
+    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+  </div>
+  <div class="submit">
+    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  </div>
+  </app-pageform>
+  <app-pageform [hidden]="current_page!=3">
+  <label>上傳資料</label>
+  <div class="submit">
+    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+  </div>
+  <div class="submit">
+    <div (click)="nextPage()" class="waves-effect waves-light btn">下一頁</div>
+  </div>
+  </app-pageform>
+  <app-pageform [hidden]="current_page!=4">
+  <label>保證</label>
+  <br>
+  <input type="radio" (click)="person()" class="with-gap" required name="guarantee" id="person">
+  <label for="person">保證人</label>
+  <br>
+  <div *ngIf="checkPerson">
+    <label>保證人圖書館證號</label>
+    <input type="text" ngModel required name="gid">
+    <label>保證人email</label>
+    <input type="email" ngModel required name="gemail">
+  </div>
+  <input type="radio" (click)="money()" class="with-gap" required name="guarantee" id="money">
+  <label for="money">願以保證金3000元整代替保證人</label>
+  <div class="submit">
+    <div (click)="prevPage()" class="waves-effect waves-light btn">上一頁</div>
+  </div>
+  <div class="submit">
+    <button type="submit" class="waves-effect waves-light btn">送出</button>
+  </div>
+  </app-pageform>
+</form>
