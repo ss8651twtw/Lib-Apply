@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CookieService } from "../_services/cookie.service";
 
 @Component( {
   selector: 'app-main',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 } )
 export class MainComponent {
 
-  constructor() { }
+  constructor( private cookie: CookieService ) { }
 
 }
