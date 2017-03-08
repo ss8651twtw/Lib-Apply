@@ -10,7 +10,6 @@ declare var Materialize: any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
-  host: { class: "app-wrapper" },
 } )
 export class LoginComponent {
 
