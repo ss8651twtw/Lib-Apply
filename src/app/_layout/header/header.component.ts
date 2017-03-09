@@ -10,5 +10,9 @@ import { CookieService } from "../../_services/cookie.service";
 export class HeaderComponent {
 
   constructor( private cookie: CookieService, private auth: AuthService ) { }
-
+  
+  userLogout() {
+  this.auth.logout({})
+  .subscribe(data => console.log(data));
+  }
 }

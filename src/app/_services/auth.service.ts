@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Http, Response } from "@angular/http";
+import { Http, Response, RequestOptions, Headers } from "@angular/http";
 import { HttpConfigService } from "./http-config.service"
 
 @Injectable()
@@ -15,8 +15,9 @@ export class AuthService {
       .map( ( data: Response ) => JSON.parse( data[ "_body" ] ) ).catch( this.httpConfig.handleError );
   }
 
-  logout(): void {
+  logout( data ) {
     document.cookie = "login=false";
+    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/cookie/remove", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } ).map((data: Response)=>(data.json())).catch(this.httpConfig.handleError);
   }
 
 }
