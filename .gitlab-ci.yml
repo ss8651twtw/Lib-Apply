@@ -1,0 +1,10 @@
+before_script:
+    - npm install
+    
+stages:
+    - build
+    
+deploy:
+    stage: build
+    script:
+        - ng build --prod
