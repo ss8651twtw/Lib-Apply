@@ -6,6 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { CardComponent } from "./card/card.component";
 import { BookComponent } from "./book/book.component";
 import { SurveyComponent } from "./survey/survey.component";
+import { CheckPersonComponent } from "./check-person/check-person.component"
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const appRoutes: Routes = [
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'card', component: CardComponent },
   { path: 'book', canActivate: [ AuthGuardService ], component: BookComponent },
   { path: 'survey', canActivate: [ AuthGuardService ], component: SurveyComponent },
+  { path: 'check/:id', component: CheckPersonComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

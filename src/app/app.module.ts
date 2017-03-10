@@ -23,6 +23,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from "./_services/auth-guard.service";
 import { AuthService } from "./_services/auth.service";
+import { CheckPersonComponent } from './check-person/check-person.component';
 
 @NgModule( {
   imports: [
@@ -44,7 +45,9 @@ import { AuthService } from "./_services/auth.service";
     SurveyComponent,
     PageformComponent,
     EnvelopeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CheckPersonComponent,
+    CheckPersonComponent
   ],
   providers: [
     HttpConfigService,
