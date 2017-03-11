@@ -14,6 +14,19 @@ export class ManageBookComponent implements OnInit {
 
   constructor( private request: RequestService ) { }
 
-  ngOnInit() { this.request.getBookData().subscribe( data => this.applyForms = data["data"] ); }
+  ngOnInit() { 
+    this.request.getBookData().subscribe( data => this.applyForms = data["data"] );
+  }
+
+  delete(data: any) {
+    if (confirm("你確認要刪除嗎?"))
+      console.log(data);
+    else
+      console.log("Nooooo");
+  }
+
+  change(data: any) {
+    console.log(data);
+  }
 
 }

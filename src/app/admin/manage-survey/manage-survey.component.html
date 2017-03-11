@@ -1,18 +1,28 @@
 <ul class="collapsible" data-collapsible="accordion">
   <li *ngFor="let applyForm of applyForms">
-    <div class="collapsible-header">
-      <span class="new badge"></span>
-      <i class="material-icons">filter_drama</i>
-      For Event : {{ applyForm["event"] }}
-    </div>
-    <div class="collapsible-body">
-      <ul>
-        <li>Method : {{ applyForm["method"] }}</li>
-        <li>Name : {{ applyForm["name"] }}</li>
-        <li>Reason : {{ applyForm["reason"] }}</li>
-        <li>Reply : {{ applyForm["reply"] }}</li>
-        <li>Touch : {{ applyForm["touch"] }}</li>
-      </ul>
-    </div>
+  <div class="collapsible-header">
+    <span class="new badge red" data-badge-caption="待處理" *ngIf="applyForm['status']=='undone'"></span>
+    <span class="new badge green" data-badge-caption="已完成" *ngIf="applyForm['status']=='done'"></span>
+    <i class="material-icons">filter_drama</i>
+    For Event : {{ applyForm["event"] }}
+  </div>
+  <div class="collapsible-body">
+    <ul>
+      <li>Time : {{ applyForm["time"] }}</li>
+      <li>Method : {{ applyForm["method"] }}</li>
+      <li>Name : {{ applyForm["name"] }}</li>
+      <li>Reason : {{ applyForm["reason"] }}</li>
+      <li>Reply : {{ applyForm["reply"] }}</li>
+      <li>Touch : {{ applyForm["touch"] }}</li>
+      <div class="bottom">
+        <div class="submit">
+          <div (click)="change(applyForm)" class="waves-effect waves-light btn">編輯</div>
+        </div>
+        <div class="submit">
+          <div (click)="delete(applyForm)" class="waves-effect waves-light btn">刪除</div>
+        </div>
+      </div>
+    </ul>
+  </div>
   </li>
 </ul>

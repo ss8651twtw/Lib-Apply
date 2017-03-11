@@ -16,4 +16,8 @@ export class ManageSurveyComponent implements OnInit {
 
   ngOnInit() { this.request.getSurveyData().subscribe( data => this.applyForms = data[ "data" ] );}
 
+  delete() {}
+
+  change() {}
+
 }
