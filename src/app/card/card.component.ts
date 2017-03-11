@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { RequestService } from "../_services/request.service"
+import { RequestService } from "../_services/request.service";
+import { FileUploader } from "ng2-file-upload";
 
 declare var Materialize: any;
 
@@ -33,6 +34,9 @@ export class CardComponent implements OnInit {
   nextPage() {
     this.current_page++;
   }
+
+  apiurl = '';
+  public uploader: FileUploader = new FileUploader({url: this.apiurl});
 
   checkPerson: boolean = false;
   person() { this.checkPerson = true; }

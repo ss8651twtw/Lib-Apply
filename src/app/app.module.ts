@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { FileUploadModule } from 'ng2-file-upload';
 import { AdminModule } from "./admin/admin.module";
 
 import { AdminRoutingModule } from "./admin/admin-routing.module";
@@ -32,7 +32,8 @@ import { CheckPersonComponent } from './check-person/check-person.component';
     HttpModule,
     AdminModule,
     AdminRoutingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FileUploadModule
   ],
   declarations: [
     AppComponent,
