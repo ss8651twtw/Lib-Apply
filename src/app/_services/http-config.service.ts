@@ -5,8 +5,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class HttpConfigService {
 
-  backend_domain: string = "http://" + document.location.hostname;
-  backend_port: string = "8000";
+  backend_url: string = "http://" + document.location.hostname + ":8000"
 
   headers = new Headers( { "Content-Type": "application/x-www-form-urlencoded" } );
 

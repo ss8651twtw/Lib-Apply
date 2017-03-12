@@ -28,9 +28,8 @@ export class LoginComponent {
 
   check( data ) {
     console.log( data );
-    let authority = data[ "authority" ];
+    let authority = this.cookie.getCookie("type");
     if ( authority == "Admin" || authority == "Auth" || authority == "Teacher" ) {
-      document.cookie = "login=true";
       let redirect = this.auth.redirectUrl ? this.auth.redirectUrl : '/';
       Materialize.toast( 'Welcome ' + this.username, 1000 );
       setTimeout( () => this.router.navigate( [ redirect ] ), 1500 );

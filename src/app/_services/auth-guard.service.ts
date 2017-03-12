@@ -25,7 +25,7 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
     // Store the attempted URL for redirecting
     this.auth.redirectUrl = url;
 
-    if ( this.cookie.getCookie( "login" ) == "true" ) {
+    if ( this.cookie.getCookie( "type" ) ) {
       if ( this.getLevel( this.cookie.getCookie( "type" ) ) >= this.getLevel( authority ) ) { return true; }
       else {
         Materialize.toast( 'You are not authorize', 1000 );
@@ -34,7 +34,6 @@ export class AuthGuardService implements CanActivate,CanActivateChild {
       }
     }
     else {
-      // Navigate to the login page with extras
       this.router.navigate( [ '/login' ] );
       return false;
     }

@@ -3,12 +3,12 @@
 </div>
 
 <div class="app-wrapper">
-  <div class="icon-wrapper center-wrapper" *ngIf="cookie.getCookie('login') != 'true'">
+  <div class="icon-wrapper center-wrapper" *ngIf="!cookie.getCookie('type')">
     <div class="main-card materialize"></div>
     <p>借書證申請單</p>
     <a [routerLink]="'card'" class="waves-effect waves-light btn">申請</a>
   </div>
-  <div class="icon-wrapper center-wrapper" *ngIf="cookie.getCookie('login') != 'true' || cookie.getCookie('type') == 'Admin' || cookie.getCookie('type') == 'Teacher'">
+  <div class="icon-wrapper center-wrapper" *ngIf="!cookie.getCookie('type') || cookie.getCookie('type') == 'Admin' || cookie.getCookie('type') == 'Teacher'">
     <div class="main-book materialize"></div>
     <p>教授指定參考書</p>
     <a [routerLink]="'book'" class="waves-effect waves-light btn">申請</a>

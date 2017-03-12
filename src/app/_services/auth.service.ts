@@ -11,13 +11,12 @@ export class AuthService {
   redirectUrl: string;
 
   login( data ) {
-    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/checkAuth", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } )
+    return this.http.post( this.httpConfig.backend_url + "/api/checkAuth", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } )
       .map( ( data: Response ) => JSON.parse( data[ "_body" ] ) ).catch( this.httpConfig.handleError );
   }
 
   logout( data ) {
-    document.cookie = "login=false";
-    return this.http.post( this.httpConfig.backend_domain + ':' + this.httpConfig.backend_port + "/api/cookie/remove", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } ).map((data: Response)=>(data.json())).catch(this.httpConfig.handleError);
+    return this.http.post( this.httpConfig.backend_url + "/api/cookie/remove", this.httpConfig.urlEncode( data ), { headers: this.httpConfig.headers, withCredentials: true } ).map((data: Response)=>(data.json())).catch(this.httpConfig.handleError);
   }
 
 }
