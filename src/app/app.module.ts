@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { FileUploadModule } from 'ng2-file-upload';
-import { AdminModule } from "./admin/admin.module";
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-translate";
 
+import { AdminModule } from "./admin/admin.module";
 import { AdminRoutingModule } from "./admin/admin-routing.module";
 import { AppRoutingModule } from "./app-routing.module";
+
 import { HttpConfigService } from "./_services/http-config.service";
 import { RequestService } from "./_services/request.service";
 import { CookieService } from "./_services/cookie.service";
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_layout/header/header.component';
 import { FooterComponent } from './_layout/footer/footer.component';
@@ -25,6 +28,10 @@ import { AuthGuardService } from "./_services/auth-guard.service";
 import { AuthService } from "./_services/auth.service";
 import { CheckPersonComponent } from './check-person/check-person.component';
 
+export function createTranslateLoader(http: Http) {
+  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
+
 @NgModule( {
   imports: [
     BrowserModule,
@@ -33,7 +40,12 @@ import { CheckPersonComponent } from './check-person/check-person.component';
     AdminModule,
     AdminRoutingModule,
     AppRoutingModule,
-    FileUploadModule
+    FileUploadModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   declarations: [
     AppComponent,

@@ -5,14 +5,34 @@
     <ul class="hide-on-med-and-down right">
       <li><a [routerLink]="''">首頁</a></li>
       <li><a *ngIf="cookie.getCookie('type') == 'Admin'" [routerLink]="'admin'">管理</a></li>
-      <li><a *ngIf="!cookie.getCookie('type')" [routerLink]="'login'">登入</a></li>
-      <li><a *ngIf="cookie.getCookie('type')" (click)="userLogout()">登出</a></li>
+      <li><a *ngIf="!cookie.getCookie('type')" [routerLink]="'login'">{{'login' | translate}}</a></li>
+      <li><a *ngIf="cookie.getCookie('type')" (click)="userLogout()">{{'logout' | translate}}</a></li>
+      <li>
+        <div class="switch">
+          <label>
+            {{nowLanguage}}
+            <input type="checkbox" (click)="changeLanguage()" value="on">
+            <span class="lever"></span>
+            {{otherLanguage}}
+          </label>
+        </div>
+      </li>
     </ul>
     <ul class="side-nav" id="mobile">
       <li><a [routerLink]="''">首頁</a></li>
       <li><a *ngIf="cookie.getCookie('type') == 'Admin'" [routerLink]="'admin'">管理</a></li>
-      <li><a *ngIf="!cookie.getCookie('type')" [routerLink]="'login'">登入</a></li>
-      <li><a *ngIf="cookie.getCookie('type')" (click)="userLogout()">登出</a></li>
+      <li><a *ngIf="!cookie.getCookie('type')" [routerLink]="'login'">{{'login' | translate}}</a></li>
+      <li><a *ngIf="cookie.getCookie('type')" (click)="userLogout()">{{'logout' | translate}}</a></li>
+      <li>
+        <div class="switch">
+          <label>
+            {{nowLanguage}}
+            <input type="checkbox" (click)="changeLanguage()" value="on">
+            <span class="lever"></span>
+            {{otherLanguage}}
+          </label>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

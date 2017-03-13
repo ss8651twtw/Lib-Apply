@@ -8,5 +8,9 @@ export class CookieService {
       if ( cookies[ i ].trim().split( '=' )[ 0 ] == key ) return cookies[ i ].trim().split( '=' )[ 1 ];
     }
     return "";
- } 
+  }
+
+  setCookie( key: string, value: string ) {
+    document.cookie = key + "=" + value;
+  }
 }
